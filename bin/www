@@ -1,0 +1,11 @@
+#!/usr/bin/env node
+const app = require('../index');
+const pg = require('../lib/postgres');
+
+pg.initialize(function(err){
+  if(err){
+    throw err;
+  }
+  app.listen(app.config.PORT);
+  console.log('book author listening at http://localhost:%s', app.config.PORT);
+});

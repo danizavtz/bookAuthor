@@ -1,0 +1,19 @@
+version: "2"
+services:
+  postgres-db:
+    image: postgres:latest
+    restart: always
+    environment:
+      POSTGRES_DB: libby
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+  server-api:
+    image: "node:latest"
+    build: .
+    environment:
+      - NODE_ENV=production
+    expose:
+      - "3002"
+    command: "npm start"
+    depends_on:
+      - postgres-db
