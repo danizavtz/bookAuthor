@@ -12,8 +12,8 @@ services:
     build: .
     environment:
       - NODE_ENV=production
-    expose:
-      - "3002"
-    command: "npm start"
+    ports:
+      - "3002:3002"
+    command: "/app/entrypoint.sh"
     depends_on:
       - postgres-db
