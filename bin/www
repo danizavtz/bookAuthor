@@ -2,7 +2,7 @@
 const app = require('../index');
 const pg = require('../lib/postgres');
 
-pg.initialize(function(err){
+pg.initialize((err) => {
   if(err){
     throw err;
   }
