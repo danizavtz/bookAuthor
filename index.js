@@ -8,15 +8,12 @@ const expressValidator = require('express-validator');
 const config = require('./config/env.config.json')[process.env.NODE_ENV || 'development'];
 
 const app = express();
-app.disable('x-powered-by');
 app.config = config;
 cors({ credentials: true, origin: true });
 app.use(cors());
-app.use(bodyParser.json({ type: 'application/json' }));
-app.use(bodyParser.urlencoded({ extended: true }));
+app.use(app.json());
 app.use(expressValidator());
 
-app.locals.title = "Book Author app";
 if (process.env.NODE_ENV !== 'test') {
   app.use(logger('dev'));
 }
